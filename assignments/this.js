@@ -31,7 +31,7 @@ const myObject = {
     greeting: `Hello`,
     sayHello: function(name) {
         console.log(`${this.greeting} my name is ${name}`);
-        console.log(this);
+        return this;
     }
 };
 
@@ -45,43 +45,32 @@ function CordialPerson(greeter) {
     this.greeting = `Hello `;
     this.greeter = greeter;
     this.speak = function() {
-        console.log(this.greeting + this.greeter)
-        console.log(this)
+        return this.greeting + this.greeter;
     };
 }
 
 const bill = new CordialPerson(`Bob`);
 const bob = new CordialPerson(`Bill`);
 
-bill.speak();
-bob.speak();
+console.log(bill.speak());
+console.log(bob.speak());
 
 // Principle 4
 
 // code example for Explicit Binding
 
-const yourObject = {
-    name: 'Dan Levy',
-    city: 'Denver',
-    favoriteFood: '🍕'
+
+var person = {
+    fullName: function() {
+      return this.firstName + " " + this.lastName;
+    }
   }
-  
-  const me = {
-    name: 'Chris Carter',
-    city: 'Salt Lake',
-    favoriteFood: '🍕'
+  var person1 = {
+    firstName:"John",
+    lastName: "Doe"
   }
-  
-  const thingsYouEnjoy = ['Hiking', 'JavaScript', 'Teaching']
-  
-  const thingsIEnjoy = ['Gaming', 'Snowboarding', 'MMA']
-  
-  
-  function tellUsAboutYourself(thing1, thing2, thing3){
-    return `Hi! My name is ${this.name}, I live in ${this.city}, and I enjoy ${thing1}, ${thing2}, and ${thing3}. I love to eat ${this.favoriteFood}.`
-  
-  
+  var person2 = {
+    firstName:"Mary",
+    lastName: "Doe"
   }
-  
-  
-  tellUsAboutYourself.call(me, ...thingsIEnjoy )
+  console.log(person.fullName.call(person1)); 
